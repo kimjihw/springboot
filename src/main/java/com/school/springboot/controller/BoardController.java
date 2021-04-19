@@ -15,15 +15,25 @@ public class BoardController {
     private BoardService boardService;
 
 
-    @GetMapping("/list")
-    public String list(Model model, @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
+    @GetMapping("/freelist")
+    public String freelist(Model model, @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
         List<BoardDto> boardList = boardService.getBoardlist(pageNum);
         Integer[] pageList = boardService.getPageList(pageNum);
 
         model.addAttribute("boardList", boardList);
         model.addAttribute("pageList", pageList);
 
-        return "board/list.html";
+        return "board/freelist.html";
+    }
+    @GetMapping("/secretlist")
+    public String secretlist(Model model, @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
+        List<BoardDto> boardList = boardService.getBoardlist(pageNum);
+        Integer[] pageList = boardService.getPageList(pageNum);
+
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("pageList", pageList);
+
+        return "board/secretlist.html";
     }
 
     @GetMapping("/post")
@@ -34,7 +44,7 @@ public class BoardController {
     @PostMapping("/post")
     public String write(BoardDto boardDto){
         boardService.savePost(boardDto);
-        return "board/list.html";
+        return "board/freelist.html";
     }
     @GetMapping("/post/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
@@ -56,14 +66,14 @@ public class BoardController {
     public String update(BoardDto boardDTO) {
         boardService.savePost(boardDTO);
 
-        return "board/list.html";
+        return "board/freelist.html";
     }
 
     @DeleteMapping("/post/{no}")
     public String delete(@PathVariable("no") Long no) {
         boardService.deletePost(no);
 
-        return "board/list.html";
+        return "board/freelist.html";
     }
 
     @GetMapping("/board/search")
@@ -72,7 +82,7 @@ public class BoardController {
 
         model.addAttribute("boardList", boardDtoList);
 
-        return "board/list.html";
+        return "board/freelist.html";
     }
 
 
