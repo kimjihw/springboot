@@ -3,14 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 </head>
 <body>
+<h1>게시글쓰기</h1>
 <form  th:action="@{/post}" method="post">
-    제목 : <input type="text" name="title"> <br>
-    작성자 : <input type="text" name="writer"> <br>
-    <textarea name="content"></textarea><br>
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <form>
+                <div class="form-group">
+                    <label>제목</label>
+                        <input type="text" name="title">
+                </div>
+                <div class="form-group">
+                    <label>작성자</label>
+                        <input type="text" name="writer">
+                </div>
+                <div class="form-group">
+                    <label>내용</label>
+                    <textarea name="content"></textarea>
 
-    <input type="submit" value="등록">
+                    <input type="submit" value="등록">
+                </div>
+            </form>
+        </div>
+    </div>
 </form>
+<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="/js/app/index.js"></script>
 </body>
 </html>

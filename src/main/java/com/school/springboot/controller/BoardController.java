@@ -25,16 +25,6 @@ public class BoardController {
 
         return "board/freelist.html";
     }
-    @GetMapping("/secretlist")
-    public String secretlist(Model model, @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
-        List<BoardDto> boardList = boardService.getBoardlist(pageNum);
-        Integer[] pageList = boardService.getPageList(pageNum);
-
-        model.addAttribute("boardList", boardList);
-        model.addAttribute("pageList", pageList);
-
-        return "board/secretlist.html";
-    }
 
     @GetMapping("/post")
     public String write(){

@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/board.css}">
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
 </head>
 <body>
 <form action="/freelist">
-
-
-    <a th:href="@{/post}">글쓰기</a> <!--@{}의 의미는 애플리케이션이 설치된 경로를 기중으로하는 상대경로-->
-    <table>
+    <h1>자유게시판</h1>
+    <div class="container">
+    <table class="table table-hover">
         <thead>
         <tr>
-            <th class="one wide">번호</th>
-            <th class="ten wide">글제목</th>
-            <th class="two wide">작성자</th>
-            <th class="three wide">작성일</th>
+            <th>번호</th>
+            <th>글제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
         </tr>
         </thead>
 
@@ -40,18 +41,37 @@
         </tr>
         </tbody>
     </table>
+    </div>
 </form>
+<div class="text-center">
+    <ul class="pagination">
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#">9</a></li>
+    </ul>
+</div>
 <form action="/board/search" method="GET">
     <div>
     <span th:each="pageNum : ${pageList}" th:inline="text">
         <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
     </span>
     </div>
-    <div>
+    <div class="search-list">
         <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
     </div>
-
     <button>검색하기</button>
+
+    <div class="write-btn">
+        <a class="btn btn-default pull-right" th:href="@{/post}">글쓰기</a> <!--@{}의 의미는 애플리케이션이 설치된 경로를 기중으로하는 상대경로-->
+    </div>
 </form>
+<script src="js/query-3.1.1.js"></script>
+<script src="@{/js/bootstrap.js}"></script>
 </body>
 </html>
