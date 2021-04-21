@@ -31,6 +31,8 @@ public class BoardService {
                     .content(boardEntity.getContent())
                     .writer(boardEntity.getWriter())
                     .createdDate(boardEntity.getCreatedDate())
+                    .origFilename(boardEntity.getOrigFilename())
+                    .filename(boardEntity.getFilename())
                     .build();
 
             boardDtoList.add(boardDTO);
@@ -49,6 +51,8 @@ public class BoardService {
                 .content(boardEntity.getContent())
                 .writer(boardEntity.getWriter())
                 .createdDate(boardEntity.getCreatedDate())
+                .origFilename(boardEntity.getOrigFilename())
+                .filename(boardEntity.getFilename())
                 .build();
 
         return boardDTO;

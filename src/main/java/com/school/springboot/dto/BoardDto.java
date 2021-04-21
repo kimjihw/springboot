@@ -16,6 +16,9 @@ public class BoardDto {
     private String content;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
+    private String origFilename;
+    private String filename;
+
 
     public BoardEntity toEntity(){
         BoardEntity boardEntity = BoardEntity.builder()
@@ -23,17 +26,25 @@ public class BoardDto {
                 .writer(writer)
                 .title(title)
                 .content(content)
+                .origFilename(origFilename)
+                .filename(filename)
+
                 .build();
+
         return boardEntity;
     }
 
     @Builder
-    public BoardDto(Long id, String title, String content, String writer, LocalDateTime createdDate, LocalDateTime modifiedDate){
+    public BoardDto(Long id, String title, String content, String writer, LocalDateTime createdDate, LocalDateTime modifiedDate,
+                    String origFilename, String filename, Long fileId){
         this.id = id;
         this.writer = writer;
         this.title = title;
         this.content = content;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
+        this.origFilename = origFilename;
+        this.filename = filename;
+
     }
 }

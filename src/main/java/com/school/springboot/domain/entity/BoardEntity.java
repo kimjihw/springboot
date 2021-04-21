@@ -25,12 +25,22 @@ public class BoardEntity extends TimeEntity{
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
+
+    @Column(nullable = false)
+    private String origFilename;
+
+    @Column(nullable = false)
+    private String filename;
+
+
     @Builder
-    public BoardEntity(Long id, String title, String content, String writer){
+    public BoardEntity(Long id, String title, String content, String writer, String origFilename, String filename){
         this.id = id;
         this.writer = writer;
         this.title = title;
         this.content = content;
+        this.origFilename = origFilename;
+        this.filename = filename;
 
     }
 }

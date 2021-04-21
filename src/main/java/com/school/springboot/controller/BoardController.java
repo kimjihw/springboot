@@ -2,10 +2,13 @@ package com.school.springboot.controller;
 
 import com.school.springboot.dto.BoardDto;
 import com.school.springboot.service.BoardService;
+import com.school.springboot.util.MD5Generator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import sun.security.provider.MD5;
 
 import java.util.List;
 
@@ -32,8 +35,17 @@ public class BoardController {
     }
 
     @PostMapping("/post")
-    public String write(BoardDto boardDto){
-        boardService.savePost(boardDto);
+    public String write(@RequestParam("file") MultipartFile files, BoardDto boardDto){
+        try{
+            String origFilename = files.getOriginalFilename();
+            String filename = new MD5Generator(origFilename).toString();
+
+            boardDto.setOrigFilename(origFilename);
+            boardDto.setFilename(filename);
+            boardService.savePost(boardDto);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return "board/freelist.html";
     }
     @GetMapping("/post/{no}")
