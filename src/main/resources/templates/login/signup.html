@@ -153,7 +153,9 @@
     <form th:action="@{/user/signup}" method="post">
         <hr>
         <input type="text" name="email" placeholder="이메일 입력해주세요" required/>
+        <span th:text="${valid_email}"></span>
         <input type="password" name="password" placeholder="비밀번호" required/>
+        <span th:text="${valid_password}"></span>
         <div class="gender">
             <input type="radio" value="None" id="male" name="gender" checked/>
             <label for="male" class="radio" chec>Male</label>
